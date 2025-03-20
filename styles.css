@@ -1,0 +1,54 @@
+html {
+    background-color: rgba(256, 256, 256);
+}
+
+input[type=text], input[type=password] {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+  button {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    border-radius: 10px;
+  }
+
+.name {
+    text-align: center;
+}
+
+.username {
+    text-align: center;
+}
+
+.password {
+    text-align: center;
+}
+
+.sign-in {
+    text-align: center;
+}
+
+.name {
+    line-height: 30%;
+    letter-spacing: 0.1cap;
+}
+
+.button {
+    text-align: center;
+}
+
+.sign-up {
+    text-align: center;
+}
