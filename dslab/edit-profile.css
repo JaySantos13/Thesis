@@ -1,0 +1,81 @@
+body { background: #fff; }
+.edit-profile-main { max-width: 500px; margin: 0 auto; padding: 24px 0 0 0; }
+.edit-logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
+.edit-profile-card {
+  background: #ff7f1a;
+  border-radius: 18px 18px 0 0;
+  margin-bottom: 0;
+  padding: 0;
+  box-shadow: 0 4px 16px #0002;
+}
+.edit-profile-title {
+  text-align: center;
+  background: #f9d7bc;
+  border-radius: 18px 18px 0 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 10px 0 10px 0;
+  margin-bottom: 18px;
+  letter-spacing: 0.01em;
+}
+.edit-form {
+  padding: 0 18px 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.edit-input {
+  border-radius: 18px;
+  border: 1.5px solid #8883;
+  padding: 10px 16px;
+  font-size: 1.05em;
+  background: #eee;
+  outline: none;
+  margin-bottom: 0;
+  transition: border .15s;
+}
+.edit-input:focus {
+  border-color: #ff7f1a;
+  background: #fff8f3;
+}
+.edit-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  justify-content: flex-start;
+}
+.edit-btn, .edit-btn-link {
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background .18s, color .18s;
+  text-decoration: none;
+  display: inline-block;
+}
+.edit-btn.change {
+  background: #fff;
+  border: 2px solid #ff7f1a;
+  color: #ff7f1a;
+  margin-right: 10px;
+}
+.edit-btn.change:hover { background: #ffe5d0; color: #b44a00; }
+.edit-btn.cancel {
+  background: #fff;
+  border: 1.5px solid #8883;
+  color: #222;
+}
+.edit-btn.cancel:hover { background: #eee; }
+.edit-btn.save {
+  background: #ff7f1a;
+  color: #fff;
+  border: none;
+}
+.edit-btn.save:hover { background: #e86800; }
+@media (max-width: 600px) {
+  .edit-profile-main { padding: 10px 0 0 0; }
+  .edit-profile-card { padding: 0; }
+  .edit-form { padding: 0 8px 18px 8px; }
+}
