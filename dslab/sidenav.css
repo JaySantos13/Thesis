@@ -1,0 +1,148 @@
+/* Side Navigation Styles */
+.sidenav {
+  height: 100vh;
+  width: 160px;
+  position: fixed;
+  z-index: 999; /* Increased z-index to ensure it's on top */
+  top: 0;
+  left: 0;
+  background-color: #e55a00;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 80px;
+  transition: left 0.3s ease;
+  visibility: visible !important; /* Ensure visibility */
+}
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 20;
+  background-color: #444;
+  border: none;
+  border-radius: 5px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-toggle .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-toggle .icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .sidenav {
+    left: -160px; /* Hide by default on small screens */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sidenav.active {
+    left: 0; /* Show when active class is added */
+  }
+  
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it's above other elements */
+  }
+  
+  .container {
+    margin: 0 auto;
+    padding-top: 70px;
+  }
+  
+  /* Adjust the padding-top for the sidenav on smaller screens */
+  .sidenav {
+    padding-top: 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-toggle {
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .sidenav {
+    width: 140px;
+  }
+  
+  .sidenav ul li a {
+    padding: 12px;
+    padding-left: 16px;
+    font-size: 0.95em;
+    height: 20px;
+  }
+  
+  .sidenav .icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidenav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav ul li a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+  height: 24px;
+  padding-left: 20px;
+}
+
+.sidenav .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  color: #fff;
+}
+
+.sidenav .icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.sidenav ul li a:hover {
+  background-color: #444;
+}
+
+.sidenav ul li a.active {
+  background-color: #444;
+  color: #fff;
+}

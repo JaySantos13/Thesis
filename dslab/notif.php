@@ -22,27 +22,49 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="notif.css">
+  <link rel="stylesheet" href="sidenav.css">
 </head>
 <body class="notif-bg">
-  <div class="notif-top-card">
-    <div class="notif-logo-center">
-      <?php include 'icons/dsB.svg'; ?>
+  <!-- Menu Toggle Button for Mobile -->    
+  <button class="menu-toggle" id="menuToggle">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </span>
+  </button>
+  
+  <!-- Side Navigation -->    
+  <div class="sidenav" id="sideNav">
+    <ul>
+      <li><a class="active" href="notif.php"><span class="icon"><?php include 'icons/bell.svg'; ?></span> Notifications</a></li>
+      <li><a href="history.php"><span class="icon"><?php include 'icons/clock.svg'; ?></span> History</a></li>
+      <li><a href="dashboard.php"><span class="icon"><?php include 'icons/home.svg'; ?></span> Home</a></li>
+      <li><a href="profile.php"><span class="icon"><?php include 'icons/profile.svg'; ?></span> Profile</a></li>
+      <li><a href="more.php"><span class="icon"><?php include 'icons/more.svg'; ?></span> More</a></li>
+    </ul>
+  </div>
+  
+  <div class="notif-container">
+    <div class="notif-top-card">
+      <div class="notif-logo-center">
+        <?php include 'icons/dsB.svg'; ?>
+      </div>
     </div>
-  </div>
-  <div class="notif-header-bar">Notification</div>
-  <div class="notif-main-card">
+    <div class="notif-header-bar">Notification</div>
+    <div class="notif-main-card">
     <form class="notif-search-row" method="get" action="">
-  <div class="notif-search-group">
-    <input type="text" class="notif-search-input" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-    <button type="submit" class="notif-filter-btn" title="Apply Search/Filter">
-      <span class="notif-search-icon">&#128269;</span>
-    </button>
-  </div>
-  <label class="notif-unread-toggle">
-    <input type="checkbox" name="unread" value="1" <?php if(isset($_GET['unread'])) echo 'checked'; ?>>
-    <span>Unread only</span>
-  </label>
-</form>
+      <div class="notif-search-group">
+        <input type="text" class="notif-search-input" name="search" placeholder="Search" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+        <button type="submit" class="notif-filter-btn" title="Apply Search/Filter">
+          <span class="notif-search-icon">&#128269;</span>
+        </button>
+      </div>
+      <label class="notif-unread-toggle">
+        <input type="checkbox" name="unread" value="1" <?php if(isset($_GET['unread'])) echo 'checked'; ?>>
+        <span>Unread only</span>
+      </label>
+    </form>
     <div class="notif-list">
       <?php if (empty($notifications)): ?>
         <div class="notif-item empty">No notifications found.</div>
@@ -71,13 +93,28 @@ $conn->close();
       <?php endif; ?>
     </div>
   </div>
-  <!-- Bottom Navigation Bar (matches dashboard.php) -->
-  <ul>
-    <li><a class="active" href="notif.php">Notifications</a></li>
-    <li><a href="history.php">History</a></li>
-    <li><a href="dashboard.php">Home</a></li>
-    <li><a href="profile.php">Profile</a></li>
-    <li><a href="more.php">More</a></li>
-  </ul>
+  </div>
+  
+  <!-- Bottom Navigation Removed -->
+  
+  <!-- JavaScript for menu toggle -->    
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const menuToggle = document.getElementById('menuToggle');
+          const sideNav = document.getElementById('sideNav');
+          
+          menuToggle.addEventListener('click', function() {
+              sideNav.classList.toggle('active');
+          });
+          
+          // Close menu when clicking outside on small screens
+          document.addEventListener('click', function(event) {
+              const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+              if (isSmallScreen && !sideNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                  sideNav.classList.remove('active');
+              }
+          });
+      });
+  </script>
 </body>
 </html>

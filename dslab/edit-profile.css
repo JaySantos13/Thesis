@@ -1,6 +1,33 @@
 body { background: #fff; }
-.edit-profile-main { max-width: 500px; margin: 0 auto; padding: 24px 0 0 0; }
-.edit-logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
+body.edit-profile-bg {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: #f7f7f7;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-profile-main {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px 0 0 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.edit-logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+}
 .edit-profile-card {
   background: #ff7f1a;
   border-radius: 18px 18px 0 0;

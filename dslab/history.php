@@ -17,13 +17,36 @@ $history = $result->fetch_all(MYSQLI_ASSOC);
   <title>History - DS Lab</title>
   <link rel="stylesheet" href="notif.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sidenav.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-  <div class="notif-logo-area" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 0;">
-    <?php include 'icons/dsB.svg'; ?>
-    <div class="notif-header-bar" style="margin-top: 4px; text-align: center; width: 100%; margin: 20px;">History</div>
+<body class="notif-bg">
+  <!-- Menu Toggle Button for Mobile -->    
+  <button class="menu-toggle" id="menuToggle">
+    <span class="icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </svg>
+    </span>
+  </button>
+  
+  <!-- Side Navigation -->    
+  <div class="sidenav" id="sideNav">
+    <ul>
+      <li><a href="notif.php"><span class="icon"><?php include 'icons/bell.svg'; ?></span> Notifications</a></li>
+      <li><a class="active" href="history.php"><span class="icon"><?php include 'icons/clock.svg'; ?></span> History</a></li>
+      <li><a href="dashboard.php"><span class="icon"><?php include 'icons/home.svg'; ?></span> Home</a></li>
+      <li><a href="profile.php"><span class="icon"><?php include 'icons/profile.svg'; ?></span> Profile</a></li>
+      <li><a href="more.php"><span class="icon"><?php include 'icons/more.svg'; ?></span> More</a></li>
+    </ul>
   </div>
+  
+  <div class="notif-top-card">
+    <div class="notif-logo-center">
+      <?php include 'icons/dsB.svg'; ?>
+    </div>
+  </div>
+  <div class="notif-header-bar">History</div>
   <div class="notif-main-card">
     <form class="notif-search-row" method="get" action="">
       <div class="notif-search-group">
@@ -59,12 +82,25 @@ $history = $result->fetch_all(MYSQLI_ASSOC);
       <?php endif; ?>
     </div>
   </div>
-  <ul>
-    <li><a href="notif.php">Notifications</a></li>
-    <li><a class="active"href="history.php">History</a></li>
-    <li><a href="dashboard.php">Home</a></li>
-    <li><a href="profile.php">Profile</a></li>
-    <li><a href="/more">More</a></li>
-  </ul>
+  
+  <!-- JavaScript for menu toggle -->    
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const menuToggle = document.getElementById('menuToggle');
+          const sideNav = document.getElementById('sideNav');
+          
+          menuToggle.addEventListener('click', function() {
+              sideNav.classList.toggle('active');
+          });
+          
+          // Close menu when clicking outside on small screens
+          document.addEventListener('click', function(event) {
+              const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+              if (isSmallScreen && !sideNav.contains(event.target) && !menuToggle.contains(event.target)) {
+                  sideNav.classList.remove('active');
+              }
+          });
+      });
+  </script>
 </body>
 </html>

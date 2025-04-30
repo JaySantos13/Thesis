@@ -1,4 +1,43 @@
-.more-main { max-width: 500px; margin: 0 auto; padding: 0; }
+.more-main { 
+  max-width: 500px; 
+  margin: 0 auto; 
+  padding: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  overflow-y: auto;
+}
+
+body.more-bg {
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  background: #f4f4f4;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Responsive adjustments for sidebar */
+@media screen and (max-width: 768px) {
+  .more-main {
+    padding-top: 70px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+  }
+  
+  .more-header-bar,
+  .more-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 .more-logo-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 0; }
 .more-header-bar {
   background: #eaeaea;
@@ -34,8 +73,36 @@
 }
 .more-link:hover { background: #ffa24c; }
 @media (max-width: 600px) {
-  .more-main { padding: 0; }
-  .more-link { padding: 14px 10px 12px 10px; font-size: 1em; }
+  .more-main { 
+    padding: 0; 
+    padding-top: 60px;
+  }
+  .more-link { 
+    padding: 14px 10px 12px 10px; 
+    font-size: 1em; 
+  }
+  .more-header-bar {
+    border-radius: 12px 12px 0 0;
+    font-size: 1.1em;
+  }
+  .more-logo-area {
+    margin-bottom: 12px;
+  }
+  .more-logo-area svg,
+  .more-logo-area img {
+    max-width: 100px;
+    height: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .more-main {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .more-link {
+    padding: 12px 8px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
