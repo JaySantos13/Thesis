@@ -1,0 +1,107 @@
+/* Admin Sidenav Styles - Matching Professor Dashboard */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidenav {
+    width: 250px;
+    background-color: #444;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+}
+
+.admin-sidenav h2 {
+    color: #ff7f1a;
+    margin: 0;
+}
+
+.admin-sidenav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-sidenav li {
+    margin-bottom: 5px;
+}
+
+.admin-sidenav a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.admin-sidenav a:hover, .admin-sidenav a.active {
+    background-color: #e55a00;
+}
+
+.admin-sidenav .icon {
+    margin-right: 10px;
+    display: inline-flex;
+}
+
+.admin-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .admin-sidenav {
+        left: -250px;
+    }
+    
+    .admin-sidenav.active {
+        left: 0;
+    }
+    
+    .admin-content {
+        margin-left: 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+}

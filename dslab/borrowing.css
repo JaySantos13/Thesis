@@ -1,0 +1,238 @@
+/* Borrowing & Return Requests CSS */
+
+.borrowing-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 40px);
+}
+
+.borrowing-header {
+  background-color: #ff7f1a;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.borrowing-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.request-type-container {
+  margin-bottom: 20px;
+}
+
+.request-type-label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.request-type-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.request-type-option {
+  background: #f0f0f0;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.request-type-option.active {
+  background: #e55a00;
+  border-color: #e55a00;
+  color: white;
+}
+
+.request-form {
+  display: none;
+}
+
+.request-form.active {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.equipment-list {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.equipment-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.equipment-item:last-child {
+  border-bottom: none;
+}
+
+.equipment-checkbox {
+  margin-right: 10px;
+}
+
+.equipment-name {
+  flex: 1;
+}
+
+.equipment-quantity {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #ff7f1a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #e55a00;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.cart-items {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item-name {
+  flex: 1;
+}
+
+.cart-item-quantity {
+  margin: 0 15px;
+  color: #666;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #e55a00;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #ffeeba;
+  color: #856404;
+}
+
+.status-approved {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-returned {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .borrowing-card {
+    border-radius: 0;
+    margin: 0;
+    height: 100vh;
+    max-width: 100%;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

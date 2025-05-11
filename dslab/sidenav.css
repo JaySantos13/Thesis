@@ -1,0 +1,218 @@
+/* Side Navigation Styles */
+.sidenav {
+  height: 100vh;
+  width: 120px;
+  position: fixed;
+  z-index: 999; /* Increased z-index to ensure it's on top */
+  top: 0;
+  left: 0;
+  background-color: #e55a00;
+  background-image: linear-gradient(to bottom, #e55a00, #ff7f1a);
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the navigation items vertically */
+  padding-top: 0;
+  transition: all 0.3s ease;
+  visibility: visible !important; /* Ensure visibility */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  background-color: #444;
+  border: none;
+  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.menu-toggle .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+.menu-toggle .icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .sidenav {
+    left: -130px; /* Hide by default on small screens */
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    width: 120px;
+  }
+  
+  .sidenav.active {
+    left: 0; /* Show when active class is added */
+  }
+  
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Ensure it's above other elements */
+  }
+  
+  .container {
+    margin: 0 auto;
+    padding-top: 80px;
+  }
+  
+  /* Adjust the padding-top for the sidenav on smaller screens */
+  .sidenav {
+    padding-top: 70px;
+  }
+  
+  /* Add overlay when sidenav is active */
+  .sidenav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+  
+  .sidenav-overlay.active {
+    display: block;
+  }
+  
+  .dashboard-container {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-toggle {
+    top: 12px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+  }
+  
+  .sidenav {
+    width: 120px;
+  }
+  
+  .sidenav ul li a {
+    padding: 12px;
+    padding-left: 15px;
+    font-size: 0.9em;
+    height: 22px;
+  }
+  
+  .sidenav .icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.sidenav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.sidenav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 5px;
+  text-align: center;
+  transition: all 0.3s ease;
+  height: auto;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-size: 0.9em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 0;
+  margin: 0;
+}
+
+.sidenav .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 8px 0;
+  color: #fff;
+  transition: transform 0.2s ease;
+  width: 28px;
+  height: 28px;
+}
+
+.sidenav .icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.sidenav ul li a:hover {
+  background-color: rgba(68, 68, 68, 0.5);
+  transform: scale(1.05);
+}
+
+.sidenav ul li a:hover .icon {
+  transform: scale(1.1);
+}
+
+.sidenav ul li a.active {
+  background-color: #444;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.sidenav ul li a.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 70%;
+  background-color: #fff;
+  border-radius: 2px 0 0 2px;
+}

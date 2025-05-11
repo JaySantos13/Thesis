@@ -1,0 +1,141 @@
+/* Mobile-friendly Edit Profile Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #ff9966; /* Adjusted to match image */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.logo-container svg {
+  width: 100px;
+  height: auto;
+}
+
+.edit-header {
+  background-color: #e6e6e6;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px 10px 10px 10px;
+  font-weight: 600;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ff9966; /* Adjusted to match image */
+  padding: 15px 10px;
+  border-radius: 0;
+}
+
+.form-input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background-color: #f2f2f2; /* Adjusted to match image */
+  font-size: 0.9em;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ff7f1a;
+  background-color: #fff;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-button {
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9em;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+}
+
+.primary-button {
+  background-color: #ff7f1a;
+  color: white;
+  min-width: 60px;
+}
+
+.secondary-button {
+  background-color: #e6e6e6;
+  color: #333;
+  min-width: 60px;
+}
+
+.full-width-button {
+  width: 100%;
+  background-color: #ff7f1a;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* Remove bottom nav as it's not in the design */
+.bottom-nav {
+  display: none;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #777;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+
+.nav-item.active {
+  color: #ff7f1a;
+}
+
+.nav-icon {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 400px) {
+  .button-row {
+    flex-direction: column;
+  }
+  
+  .action-button {
+    width: 100%;
+  }
+}
