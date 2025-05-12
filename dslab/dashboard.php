@@ -54,9 +54,6 @@ if (!isset($_SESSION['user_id'])) {
         <a class="action-btn" href="direct-request.php"><span class="icon"><?php include 'icons/request.svg'; ?></span> Direct Request</a>
         <a class="action-btn" href="equipment-info.php"><span class="icon"><?php include 'icons/equipment.svg'; ?></span> Equipment Info</a>
       </div>
-      <div class="action-row">
-        <a class="action-btn" href="borrowing.php"><span class="icon"><?php include 'icons/borrow.svg'; ?></span> Borrowing & Return</a>
-      </div>
     </div>
     <!-- JavaScript for menu toggle -->    
     <script>
