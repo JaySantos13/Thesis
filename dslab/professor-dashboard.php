@@ -45,13 +45,13 @@ if ($requests_check->num_rows > 0) {
     $column_check = $conn->query("SHOW COLUMNS FROM requests LIKE 'status'");
     if ($column_check->num_rows > 0) {
         // Only query with status column if it exists
-        $count_stmt = $conn->query("SELECT COUNT(*) as count FROM requests WHERE status = 'pending' AND professor_id = $professor_id");
+        $count_stmt = $conn->query("SELECT COUNT(*) as count FROM requests WHERE status = 'pending' AND user_id = $professor_id");
         if ($count_stmt) {
             $pending_requests = $count_stmt->fetch_assoc()['count'];
         }
     } else {
         // If status column doesn't exist, just count all requests
-        $count_stmt = $conn->query("SELECT COUNT(*) as count FROM requests WHERE professor_id = $professor_id");
+        $count_stmt = $conn->query("SELECT COUNT(*) as count FROM requests WHERE user_id = $professor_id");
         if ($count_stmt) {
             $pending_requests = $count_stmt->fetch_assoc()['count'];
         }
@@ -112,6 +112,22 @@ $conn->close();
             width: 60px;
             height: 60px;
             margin-right: 10px;
+        }
+        
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            background: white;
+            margin-bottom: 10px;
+            gap: 12px;
+            justify-content: center;
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+            width: 320px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .professor-sidenav h2 {
@@ -194,9 +210,24 @@ $conn->close();
         }
         
         .professor-actions {
-            margin-top: 40px;
+            margin-top: 10px;
             text-align: center;
-            max-width: 800px;
+            max-width: 320px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .professor-actions a:not(:first-child) {
+            height: 60px;
+        }
+        
+        .professor-actions a:first-child {
+            grid-column: 1 / span 2;
+            height: 60px;
         }
         
         .action-row {
@@ -207,29 +238,39 @@ $conn->close();
             margin-bottom: 20px;
         }
         
-        .action-btn {
-            background-color: #ff7f1a;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
+        .action-button {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 200px;
-            height: 120px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #ff7f1a;
+            color: black;
+            text-decoration: none;
+            padding: 8px 5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            font-size: 0.8em;
+            font-weight: 500;
         }
         
-        .action-btn:hover {
+        .action-button:hover {
             background-color: #e55a00;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
-        .action-btn .icon {
-            margin-bottom: 15px;
+        .action-button .icon {
+            margin-bottom: 6px;
+        }
+        
+        .action-button .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: black;
         }
         
         .welcome-section {
@@ -268,67 +309,36 @@ $conn->close();
             }
         }
     </style>
+    <style>
+    .professor-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin-left: 160px; /* same as .sidenav width */
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    @media (max-width: 768px) {
+        .professor-main {
+            margin-left: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+    </style>
 </head>
 <body>
-    <div class="professor-container">
-        <!-- Professor Side Navigation -->
-        <div class="professor-sidenav" id="professorSideNav">
-            <div class="professor-logo">
-                <img src="icons/dsB.svg" alt="DS Lab Logo" class="logo-img">
-                <h2>Professor</h2>
-            </div>
-            <ul>
-                <li><a href="professor-dashboard.php" class="active">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                        </svg>
-                    </span>
-                    Dashboard
-                </a></li>
-                <li><a href="professor-classes.php">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-6 2h2v5l-1-.75L12 9V4zM6 20V4h4v9l3-2.25L16 13V4h2v16H6z"/>
-                        </svg>
-                    </span>
-                    Classes
-                </a></li>
-                <li><a href="professor-equipment.php">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54z"/>
-                            <path d="M11 15h2v2h-2zm0-8h2v6h-2z"/>
-                        </svg>
-                    </span>
-                    Equipment
-                </a></li>
-                <li><a href="professor-requests.php">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                        </svg>
-                    </span>
-                    Requests
-                </a></li>
-                <li><a href="professor-profile.php">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                        </svg>
-                    </span>
-                    Profile
-                </a></li>
-                <li><a href="professor-dashboard.php?logout=1">
-                    <span class="icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
-                        </svg>
-                    </span>
-                    Logout
-                </a></li>
-            </ul>
-        </div>
+<div class="sidenav" id="sideNav">
+        <ul>
+            <li><a href="professor-notifications.php"><span class="icon"><?php include_once __DIR__ . '/icons/bell.svg'; ?></span> Notifications</a></li>
+            <li><a href="professor-history.php"><span class="icon"><?php include_once __DIR__ . '/icons/clock.svg'; ?></span> History</a></li>
+            <li><a href="professor-dashboard.php"><span class="icon"><?php include_once __DIR__ . '/icons/home.svg'; ?></span> Home</a></li>
+            <li><a href="professor-profile.php"><span class="icon"><?php include_once __DIR__ . '/icons/profile.svg'; ?></span> Profile</a></li>
+            <li><a href="professor-more.php"><span class="icon"><?php include_once __DIR__ . '/icons/more.svg'; ?></span> More</a></li>
+        </ul>
+    </div>
         
         <!-- Menu Toggle Button for Mobile -->
         <button class="menu-toggle" id="professorMenuToggle">
@@ -340,94 +350,105 @@ $conn->close();
         </button>
         
         <!-- Main Content -->
-        <div class="professor-content">
-            <div class="welcome-section">
-                <h2>Welcome, <?php echo htmlspecialchars($professor['name']); ?>!</h2>
-                <p>Department: <?php echo htmlspecialchars($professor['department'] ?? 'Not specified'); ?></p>
-            </div>
-            
-            <!-- Stats Cards -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <h3>My Classes</h3>
-                    <div class="count"><?php echo $class_count; ?></div>
-                </div>
-                <div class="stat-card">
-                    <h3>Available Equipment</h3>
-                    <div class="count"><?php echo $equipment_count; ?></div>
-                </div>
-                <div class="stat-card">
-                    <h3>Pending Requests</h3>
-                    <div class="count"><?php echo $pending_requests; ?></div>
-                </div>
-            </div>
-            
-            <!-- Quick Actions -->
-            <div class="professor-actions">
-                <h3>Quick Actions</h3>
-                
-                <!-- First Row -->
-                <div class="action-row">
-                    <a href="professor-labday.php" class="action-btn">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                            </svg>
-                        </span>
-                        Assign Lab Day
-                    </a>
-                    
-                    <a href="professor-lab-schedule.php" class="action-btn">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                            </svg>
-                        </span>
-                        Lab Schedule
-                    </a>
+        <div class="professor-main">
+            <?php
+            // Check if professor data exists
+            if (isset($professor) && !empty($professor)) {
+            ?>
+                <div class="mobile-header">
+                    <div class="logo">
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/dsB.svg')) {
+                            include_once __DIR__ . '/icons/dsB.svg';
+                        } else {
+                            echo '<div style="display:flex;align-items:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" style="fill:#ff6b00;">
+                                    <path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"/>
+                                </svg>
+                                <span style="color:#000;font-weight:bold;margin-left:5px;font-size:0.9em;">DS LAB</span>
+                            </div>';
+                        }
+                        ?>
+                    </div>
+                    <div class="welcome-text" style="text-align:center;">
+                        <p style="margin:0;font-size:0.7em;color:#666;">Welcome</p>
+                        <h2 style="margin:0;font-size:1em;font-weight:600;"><?php echo htmlspecialchars($professor['name'] ?? 'Professor'); ?></h2>
+                    </div>
                 </div>
                 
-                <!-- Second Row -->
-                <div class="action-row">
-                    <a href="professor-direct-request.php" class="action-btn">
+                <!-- Quick Actions -->
+                <div class="professor-actions" style="margin-top:10px;">
+                    <a href="professor-labday.php" class="action-button">
                         <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-                            </svg>
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/calendar.svg')) {
+                            include_once __DIR__ . '/icons/calendar.svg';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h5V5H4v6zm0 7h5v-6H4v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/></svg>';
+                        }
+                        ?>
                         </span>
-                        Direct Request
+                        <span style="font-weight:bold;">Assign Lab Day</span>
                     </a>
-                    
-                    <a href="professor-equipment.php" class="action-btn">
+                    <a href="professor-lab-schedule.php" class="action-button">
                         <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22 10V6c0-1.1-.9-2-2-2H4c-1.1 0-1.99.9-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.46c-1.19.69-2 1.99-2 3.46s.81 2.77 2 3.46V18H4v-2.54c1.19-.69 2-1.99 2-3.46 0-1.48-.8-2.77-1.99-3.46L4 6h16v2.54z"/>
-                                <path d="M11 15h2v2h-2zm0-8h2v6h-2z"/>
-                            </svg>
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/schedule.svg')) {
+                            include_once __DIR__ . '/icons/schedule.svg';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>';
+                        }
+                        ?>
                         </span>
-                        Equipment Info
+                        <span style="font-weight:bold;">Lab Schedule</span>
+                    </a>
+                    <a href="professor-direct-request.php" class="action-button">
+                        <span class="icon">
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/edit.svg')) {
+                            include_once __DIR__ . '/icons/edit.svg';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>';
+                        }
+                        ?>
+                        </span>
+                        <span style="font-weight:bold;">Direct Request</span>
+                    </a>
+                    <a href="professor-equipment.php" class="action-button">
+                        <span class="icon">
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/info.svg')) {
+                            include_once __DIR__ . '/icons/info.svg';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg>';
+                        }
+                        ?>
+                        </span>
+                        <span style="font-weight:bold;">Equipment Info</span>
+                    </a>
+                    <a href="professor-send-notification.php" class="action-button">
+                        <span class="icon">
+                        <?php 
+                        if (file_exists(__DIR__ . '/icons/send.svg')) {
+                            include_once __DIR__ . '/icons/send.svg';
+                        } else {
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"/></svg>';
+                        }
+                        ?>
+                        </span>
+                        <span style="font-weight:bold;">Send Schedule</span>
                     </a>
                 </div>
-                
-                <!-- Third Row -->
-                <div class="action-row">
-                    <a href="professor-send-notification.php" class="action-btn">
-                        <span class="icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                            </svg>
-                        </span>
-                        Send Notifications
-                    </a>
-                </div>
-            </div>
+            <?php
+            } else {
+                echo '<div class="error-message">Unable to load professor information. Please try again.</div>';
+            }
+            ?>
         </div>
-    </div>
-    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('professorMenuToggle');
-            const sideNav = document.getElementById('professorSideNav');
+            const sideNav = document.getElementById('sideNav');
             
             menuToggle.addEventListener('click', function() {
                 sideNav.classList.toggle('active');

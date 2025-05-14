@@ -305,7 +305,7 @@ $conn->close();
                 <h1>Admin Dashboard</h1>
                 <div class="admin-user-info">
                     <span>Welcome, <?php echo htmlspecialchars($admin['full_name']); ?></span>
-                    <a href="admin-logout.php" class="logout-btn">Logout</a>
+                    <a href="adminlogin.php" class="logout-btn">Logout</a>
                 </div>
             </div>
             

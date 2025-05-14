@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2025 at 01:31 PM
+-- Generation Time: May 14, 2025 at 06:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `created_at`, `last_login`, `is_super_admin`, `status`) VALUES
-(1, 'admin', 'admin@dslab.com', '$2y$10$MWhDGzFpFo1qHlbZvBcQ9Ols3/VdbdiunYpX6QJNa8HDERF7MxmCa', 'System Administrator', '2025-04-30 21:26:34', '2025-05-02 09:09:30', 1, 'active'),
+(1, 'admin', 'admin@dslab.com', '$2y$10$MWhDGzFpFo1qHlbZvBcQ9Ols3/VdbdiunYpX6QJNa8HDERF7MxmCa', 'System Administrator', '2025-04-30 21:26:34', '2025-05-12 12:43:41', 1, 'active'),
 (5, 'admin 1', 'admin1@dslab.com', 'admin123', 'System Administrator', '2025-05-01 04:54:10', NULL, 1, 'active');
 
 -- --------------------------------------------------------
@@ -68,41 +68,43 @@ CREATE TABLE `admin_activity_log` (
 --
 
 INSERT INTO `admin_activity_log` (`id`, `admin_id`, `action_type`, `action_details`, `ip_address`, `user_agent`, `created_at`) VALUES
-(1, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 05:13:47'),
-(2, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 05:19:13'),
-(3, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:45:47'),
-(4, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:45:49'),
-(5, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:48:18'),
-(6, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:49:37'),
-(7, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:54:21'),
-(8, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:57:13'),
-(9, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:58:51'),
-(10, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:00:47'),
-(11, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:04:14'),
-(12, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:09:47'),
-(13, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:09:48'),
-(14, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:11:40'),
-(15, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:13:16'),
-(16, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:14:50'),
-(17, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:16:31'),
-(18, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:18:24'),
-(19, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:20:13'),
-(20, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:23:25'),
-(21, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:24:56'),
-(22, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:30:25'),
-(23, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:44:17'),
-(24, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:11:32'),
-(25, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:11:38'),
-(26, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:17:32'),
-(27, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:32:38'),
-(28, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:47:56'),
-(29, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:53:48'),
-(30, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:29'),
-(31, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:33'),
-(32, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:36'),
-(33, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:09:30'),
-(34, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:09:47'),
-(35, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:56:11');
+(1, 1, 'login', 'Admin login successful', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0', '2025-05-12 12:03:08'),
+(2, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 05:13:47'),
+(3, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 05:19:13'),
+(4, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:45:47'),
+(5, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:45:49'),
+(6, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:48:18'),
+(7, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:49:37'),
+(8, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:54:21'),
+(9, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:57:13'),
+(10, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 12:58:51'),
+(11, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:00:47'),
+(12, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:04:14'),
+(13, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:09:47'),
+(14, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:09:48'),
+(15, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:11:40'),
+(16, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:13:16'),
+(17, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:14:50'),
+(18, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:16:31'),
+(19, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:18:24'),
+(20, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:20:13'),
+(21, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:23:25'),
+(22, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:24:56'),
+(23, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:30:25'),
+(24, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 13:44:17'),
+(25, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:11:32'),
+(26, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:11:38'),
+(27, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:17:32'),
+(28, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:32:38'),
+(29, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:47:56'),
+(30, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 14:53:48'),
+(31, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:29'),
+(32, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:33'),
+(33, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-05-01 16:35:36'),
+(34, 1, 'login', 'Admin login successful', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:09:30'),
+(35, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:09:47'),
+(36, 1, 'view', 'Viewed reports and logs panel', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', '2025-05-02 09:56:11'),
+(37, 1, 'login', 'Admin login successful', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0', '2025-05-12 12:43:41');
 
 -- --------------------------------------------------------
 
@@ -238,11 +240,7 @@ CREATE TABLE `enrollments` (
 
 INSERT INTO `enrollments` (`id`, `user_id`, `code`, `title`, `section`, `class_no`) VALUES
 (1, 1, 'BSCOME2207', 'Fundamentals to Electronics Circuits', '', '53104'),
-(2, 1, 'BSCOME2207L', 'Software Design', '', '53102'),
-(3, 2, 'BSCOME2207', 'Fundamentals to Electronics Circuits', '', '53104'),
-(4, 2, 'BSCOME2207L', 'Software Design', '', '53102'),
-(5, 4, 'BSCOME2207', 'Fundamentals to Electronics Circuits', '', '53104'),
-(6, 4, 'BSCOME2207L', 'Software Design', '', '53102');
+(2, 1, 'BSCOME2207L', 'Software Design', '', '53102');
 
 -- --------------------------------------------------------
 
@@ -490,10 +488,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `reset_token`, `reset_expires`, `program`, `student_no`) VALUES
-(1, 'Jay Michael', 'Santos', 'Jay', 'jaymichaelsantos.personal@gmail.com', '$2y$10$9VD9HgVQwjAl0OlQeYVNjehOMkN/r2Y2LubHdlyVHiMazG/x4JLfu', '5be87fe268b5a1c9838568ed44b38ced2e79ef1e46f5a882dec3b8d77642927f43664ec34e703a7c8f0166404eed07ffe017', '2025-04-28 13:28:53', NULL, NULL),
-(2, 'Dave', 'Beatingo', 'dave', 'dave123@gmail.com', '$2y$10$dWhibYu9yO1VXto7Ax8LVeSILjx1o3Bh2xmOeR2bdY.avrFaJXoCS', NULL, NULL, 'BSCOME', '11-1111-111'),
-(3, 'Karl Paolo', 'Cabantugan', 'Karl', 'Cabantugan.kpc@gmail.com', '$2y$10$vGvvz5bWU0qbTfyaa5t/b.OrPNiT/jM2l0Dcd7HOkrhAqZbQWzUze', '7e72a45d6844db6872cf7db4b4e3bdc6a3c1f25ad5352925bc250965f771cabe84f2c98c832bc76bd05098a2eadddc0a057d', '2025-04-22 20:06:22', NULL, NULL),
-(4, 'Ray ', 'Reynaldo', 'Ray', 'ray123@gmail.com', '$2y$10$jcjVjL2L4LJVSOzyz4AAp.qmk7LHyB.NZwuee5xc6s/1.Lkpxlqay', NULL, NULL, NULL, NULL);
+(1, 'Jay Michael', 'Santos', 'Jay', 'jaymichaelsantos.personal@gmail.com', '$2y$10$9VD9HgVQwjAl0OlQeYVNjehOMkN/r2Y2LubHdlyVHiMazG/x4JLfu', 'e4a165c384c3331bc231b3c93b0c05d74fbd17b28405546456f4d1286112f9a42f3d48fe4e8f956dd255d17b20f4c58ddfc6', '2025-04-15 20:51:04', NULL, NULL),
+(2, 'Dave', 'Beatingo', 'dave', 'dave123@gmail.com', '$2y$10$dWhibYu9yO1VXto7Ax8LVeSILjx1o3Bh2xmOeR2bdY.avrFaJXoCS', NULL, NULL, NULL, NULL),
+(3, NULL, NULL, '', '', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -596,13 +593,6 @@ ALTER TABLE `pending_returns`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `professors`
---
-ALTER TABLE `professors`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
 -- Indexes for table `requests`
 --
 ALTER TABLE `requests`
@@ -612,12 +602,6 @@ ALTER TABLE `requests`
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `system_notifications`
---
-ALTER TABLE `system_notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -631,70 +615,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `admin_activity_log`
 --
 ALTER TABLE `admin_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `admin_permissions`
---
-ALTER TABLE `admin_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `borrowing_items`
---
-ALTER TABLE `borrowing_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `borrowing_requests`
---
-ALTER TABLE `borrowing_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `classes`
---
-ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `class_schedules`
---
-ALTER TABLE `class_schedules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `equipment`
---
-ALTER TABLE `equipment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `equipment_borrowing`
---
-ALTER TABLE `equipment_borrowing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `equipment_maintenance`
---
-ALTER TABLE `equipment_maintenance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `history`
@@ -715,12 +645,6 @@ ALTER TABLE `pending_returns`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `professors`
---
-ALTER TABLE `professors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
@@ -733,58 +657,20 @@ ALTER TABLE `schedules`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `system_notifications`
---
-ALTER TABLE `system_notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `admin_activity_log`
---
-ALTER TABLE `admin_activity_log`
-  ADD CONSTRAINT `admin_activity_log_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`);
-
---
--- Constraints for table `admin_permissions`
---
-ALTER TABLE `admin_permissions`
-  ADD CONSTRAINT `admin_permissions_ibfk_1` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `borrowing_items`
---
-ALTER TABLE `borrowing_items`
-  ADD CONSTRAINT `borrowing_items_ibfk_1` FOREIGN KEY (`request_id`) REFERENCES `borrowing_requests` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `borrowing_items_ibfk_2` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`);
-
---
 -- Constraints for table `enrollments`
 --
 ALTER TABLE `enrollments`
   ADD CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `equipment_borrowing`
---
-ALTER TABLE `equipment_borrowing`
-  ADD CONSTRAINT `equipment_borrowing_ibfk_1` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`),
-  ADD CONSTRAINT `equipment_borrowing_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `equipment_maintenance`
---
-ALTER TABLE `equipment_maintenance`
-  ADD CONSTRAINT `equipment_maintenance_ibfk_1` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
